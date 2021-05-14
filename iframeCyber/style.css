@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    font-family: Lato, Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+    list-style: none;
+}
+
+li {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 2rem;
+}
+
+video {
+    width: 70%;
+    border-radius: 5px;
+}
+
+@media (max-width: 575px) {
+    ul {
+        grid-template-columns: repeat(auto-fit, minmax(99.2%, 1fr));
+    }
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header id="section-1">
+
+        <h1> <strong>Hi!</strong> I'm Mehmet</h1>
+        <h2>Software Developer</h2>
+        <p>Innovative approach to the challenges by using new tools and technologies</p>
+        <p>Creative and optimal design principle to make the technology multifunctional</p>
+
+    </header>
+
+
+    <!-- input part come before what it ll trigger; before nav  -->
+    <input type="checkbox" name="trigger-nav" id="trigger-nav" value="">
+    <!-- put inside another sementic tag to make it invisible -->
+    <label for="trigger-nav"><span>show/hide nav</span> </label>
+    <nav>
+        <ul>
+            <li>
+                <a href="#section-1"><img src="svg/home.svg" alt="home"></a>
+            </li>
+            <li><a href="#section-2">Skills</a> </li>
+            <li><a href="#section-3">Works</a> </li>
+            <li><a href="#section-4">About</a></li>
+            <li><a href="#section-5">Contact</a></li>
+            <li>
+                <a href="https://www.linkedin.com/in/mehmetcopur-01"><img src="svg/linkedin.svg" alt="linkedIn"></a>
+            </li>
+            <li>
+                <a href="https://github.com/memocpr21"><img src="./svg/github.svg" alt="github"></a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <main class="home">
+
+        <section id="section-2">
+
+            <h2> <strong>Skills</strong> I have</h2>
+
+            <ul>
+                <li> <img src="svg/java.svg" alt="java"><br>Java</li>
+
+                <li> <img src="svg/js.svg" alt="java"><br>JavaScript</li>
+
+                <li><img src="svg/html5.svg" alt="java"><br>HTML </li>
+
+                <li><img src="svg/css3.svg" alt="java"><br>CSS </li>
+            </ul>
+
+        </section>
+
+        <section id="section-3">
+
+            <h2> <strong>Works</strong> I've done</h2>
+            <ul>
+                <li>
+                    <a href="powercoders.html"><img src="svg/powercodersLogo.png" alt="powercoers"><br>Powercoders</a>
+                </li>
+
+                <li>
+                    <a href="swisscom.html"><img src="svg/swisscomLogo.png" alt="swisscom"><br>Swisscom NGG</a>
+                </li>
+
+                <li>
+                    <a href="cybertek.html"><img src="svg/cybertekLogo.png" alt="cybertek"> <br> Cybertek School</a>
+                </li>
+
+            </ul>
+        </section>
+
+        <section id="section-4">
+
+            <h2> <strong>About</strong> Me</h2>
+            <p>
+                I‘ve a engineering background and I'm interested in IT for last one and half year. The reason I ‘ve chosen to continue my career in this field is that there is huge amount of demand for several IT positions. Also, there are always breath-taking innovations
+                in this field and I would like to be a part of it. Above all I like coding and creating an optimal design to make the technology multifunctional.
+            </p>
+            <p>
+                So, in direction I've completed a couple of IT courses succesfully and in a short time, I’ve gained several IT skills. Most importantly, I'm always so eager to do more.
+            </p>
+
+            <p>
+                I'm a positive person, cross-functional team member and also good at working individually as well. I'm a someone who is quick learner and adaptable to any changing in circumstances. I'm so keen to gain new knowledge and to discover new fields and always
+                looking for the next opportunities in my career to improve myself.
+            </p>
+
+
+
+        </section>
+
+        <section id="section-5">
+
+            <h2> <strong>Contact</strong> Me</h2>
+
+            <form action="https://e3vwdl4bpd.execute-api.us-west-2.amazonaws.com/default/API2SES" method="POST">
+
+                <input type="hidden" name="send_to" value="evo21spm2@gmail.com">
+
+                <fieldset>
+                    <legend>Send an Email</legend>
+                    <label for="name">Name</label><br>
+                    <input type="text" id="name" name="name" placeholder="please enter your name"> <br>
+
+                    <label for="email">Email</label><br>
+                    <input type="text" id="email" name="email" placeholder="please enter your email address"> <br>
+
+                    <label for="comments"></label><br>
+                    <textarea name="comments" id="comments" cols="30" rows="10" placeholder="please enter your message"></textarea>
+
+                    <button type="submit">Submit</button>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Contact Infos</legend>
+                    <p>mehmet.copur@powercoders.org</p>
+                </fieldset>
+
+            </form>
+
+
+        </section>
+
+
+    </main>
+
+
+    <footer>
+
+        &copy; Mehmet
+
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

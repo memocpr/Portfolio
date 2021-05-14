@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwisscomNGG</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1> <strong>Swisscom NGG</strong> course !</h1>
+
+    </header>
+
+
+    <!-- input part come before what it ll trigger; before nav  -->
+    <input type="checkbox" name="trigger-nav" id="trigger-nav" value="">
+    <!-- put inside another sementic tag to make it invisible -->
+    <label for="trigger-nav"><span>show/hide nav</span> </label>
+    <nav>
+        <ul>
+            <li>
+                <a href="home.html"><img src="svg/home.svg" alt="home"></a>
+            </li>
+            <li><a href="#section-1">Content</a> </li>
+            <li><a href="#section-2">Projects</a> </li>
+
+        </ul>
+    </nav>
+
+    <main class="courses">
+
+        <section id="section-1">
+
+            <h2> <strong>Content</strong> of course</h2>
+
+            <ul>
+                <li> <img src="logo/js.png" alt="js"><br>JavaScript</li>
+                <li><img src="logo/html.png" alt="html"><br>HTML</li>
+                <li><img src="logo/css.png" alt="json"><br>CSS</li>
+
+            </ul>
+
+        </section>
+
+        <section id="section-2">
+
+            <h2> <strong>Projects</strong> I've done</h2>
+
+            <ul>
+                <li><a href="https://evomr-bikeshop.netlify.app/" target="_blank">Bike Shop</a></li>
+                <li>
+                    <a href="svg/NGG.pdf" target="_blank">Certificate</a>
+                </li>
+
+            </ul>
+
+        </section>
+
+
+    </main>
+
+
+    <footer>
+
+        &copy; Mehmet
+
+    </footer>
+    <style>
+        a:hover {
+            font-size: 1.5vw;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+    </style>
+    <script src="script.js"></script>
+</body>
+
+</html>
