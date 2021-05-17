@@ -1,0 +1,45 @@
+inputs
+hero name
+
+outputs
+hero infos
+hero movies
+
+process
+enter a hero name
+see hero options and movies about hero
+select one hero from results
+see detail info about hero
+add or remove favorite poll any hero
+
+
+constraints
+input should be correct and entire name of hero
+
+
+what did you do, why and how long for each part (constraints, decisions, planning)
+-At first I did a litle research about similar projects
+-Identified inputs, outputs, constraints and process in my mind
+-Divided the work three part, 1-first API 2-Second API, 3-Favorite functionality
+-Started through creating a basic HTML structure
+-After then focuced JS part
+-Last design by using CSS
+
+why this tech stack?
+-HTML,CSS,JS
+because for now I know only these ones 
+
+what is the status at the end?
+-the app works with second API properly but there are a few issue with first one
+-favorite functionality is not available yet
+
+assumptions you made / questions you clarified project enhancements you did
+sketches you made (if you made them)
+note areas of improvement
+
+
+
+
+
+
+
