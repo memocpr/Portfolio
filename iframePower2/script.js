@@ -1,34 +1,28 @@
 const token_hero = '338148107599656';
 let myUrl = `https://www.superheroapi.com/api.php/${token_hero}/search/`;
-let dataHero;
-let heroResults;
 
 const token_movie = `7e451c2`;
 let myURL2 = `http://www.omdbapi.com/?i=tt3896198&apikey=${token_movie}&s=`;
 
+let dataHero;
+let heroResults;
 let dataMovie;
 let movieResults;
-
-let heroName = "";
 let inputTagValue;
 
 let inputTag = document.querySelector('#searchArea');
 let searchBtn = document.querySelector('#searchBtn');
-let article1 = document.querySelector('#ar-1');
-let article2 = document.querySelector('#ar-2');
-let article3 = document.querySelector('#ar-3');
-let article4 = document.querySelector('#ar-4');
-let article5 = document.querySelector('#ar-5');
-let article6 = document.querySelector('#ar-6');
+let heroSection = document.querySelector('#heroes');
+let movieSection = document.querySelector('#movies')
+let favSection = document.querySelector('#favorites');
 
 searchBtn.addEventListener('click', event => {
     event.preventDefault();
-    heroName = inputTag.value;
+    let heroName = inputTag.value;
     inputTagValue = inputTag.value // put the input value inside a variable to use later
-    inputTag.value = ""; // clean the input value from input area
-    article2.innerHTML = ""; // clean section2
-    article4.innerHTML = "";
-    article5.innerHTML = "";
+    inputTag.value = "";
+    heroSection.innerHTML = "";
+    movieSection.innerHTML = "";
     myUrl = `https://www.superheroapi.com/api.php/${token_hero}/search/${heroName}/`;
     myURL2 = `http://www.omdbapi.com/?i=tt3896198&apikey=${token_movie}&s=${heroName}`;
 
@@ -42,9 +36,7 @@ let getHeroInfo = async() => {
     dataHero = data;
     console.log(dataHero);
     heroResults = dataHero.results;
-    console.log(heroResults);
     showInfo();
-
 }
 
 let getMovieInfo = async() => {
@@ -53,89 +45,136 @@ let getMovieInfo = async() => {
     dataMovie = data2;
     movieResults = dataMovie.Search;
     //console.log(movieResults);
-    showInfo2();
+    showMovie();
+}
+
+
+let heroBtnNode;
+let imgNode;
+let nameNode;
+let detailsContainerNode;
+
+//show options after research
+let heroOptions = (one) => {
+    let articleNode = document.createElement('article');
+    nameNode = document.createElement('h3');
+    nameNode.textContent = `${one.id} : ${one.name}`;
+    imgNode = document.createElement('img');
+    imgNode.src = one.image.url;
+    heroBtnNode = document.createElement('button');
+    heroBtnNode.appendChild(nameNode);
+    heroBtnNode.appendChild(imgNode);
+    articleNode.appendChild(heroBtnNode);
+    heroSection.appendChild(articleNode);
+
+    // call all other properties with their details and put inside a div one by one
+    detailsContainerNode = document.createElement("div");
+    detailsContainerNode.appendChild(createDetail('powerstats', one.powerstats));
+    detailsContainerNode.appendChild(createDetail('appearance', one.appearance));
+    detailsContainerNode.appendChild(createDetail('biography', one.biography));
+    detailsContainerNode.appendChild(createDetail('connections', one.connections));
+    detailsContainerNode.appendChild(createDetail('work', one.work));
+}
+
+// inject all detail info inside a detail tag according to property-name and property object
+let createDetail = (proName, obj) => {
+    let detailNode = document.createElement('details');
+    let sumaryNode = document.createElement('summary');
+    sumaryNode.textContent = proName;
+    detailNode.appendChild(sumaryNode);
+    let dlNode = document.createElement('dl');
+
+    for (let key in obj) {
+        let dtNode = document.createElement('dt');
+        dtNode.textContent = key;
+        let ddNode = document.createElement('dd');
+        ddNode.textContent = obj[key];
+        dlNode.appendChild(dtNode);
+        dlNode.appendChild(ddNode);
+    }
+    detailNode.appendChild(dlNode);
+    return detailNode;
+}
+
+// select one hero after search
+let pickOneHero = (hero, im, nm, div) => {
+
+    heroBtnNode.addEventListener('click', () => {
+
+        let favIcon = "star-fav.svg";
+        let unfavIcon = "star.svg";
+        heroSection.innerHTML = "";
+        let articleNode = document.createElement('article');
+        let favBtnNode = document.createElement('button');
+        let favIconNode = document.createElement('img');
+        let stylesIcon = {
+            "width": "15px",
+            "margin": "1px"
+        };
+        Object.assign(favIconNode.style, stylesIcon);
+        favIconNode.src = unfavIcon;
+        articleNode.appendChild(nm);
+        articleNode.appendChild(im);
+        articleNode.appendChild(div);
+        favBtnNode.appendChild(favIconNode);
+        articleNode.appendChild(favBtnNode);
+        heroSection.appendChild(articleNode);
+
+        // add or remove favorite
+        favBtnNode.addEventListener('click', () => {
+
+            let heroString = localStorage.getItem('favHero');
+            let heroArr = heroString === null ? [] : JSON.parse(heroString);
+
+            let inArr = -1;
+            for (let i = 0; i < heroArr.length; i++) {
+                if (heroArr[i].id === hero.id) {
+                    inArr = i;
+                }
+            }
+
+            if (inArr === -1) { // if object does not exist it, then inArr is -1 
+                heroArr.push(hero);
+                favIconNode.src = favIcon;
+
+            } else {
+                heroArr.splice(inArr, 1);
+                favIconNode.src = unfavIcon;
+            }
+            localStorage.setItem('favHero', JSON.stringify(heroArr));
+        })
+    })
 }
 
 let showInfo = () => {
     let h2Node = document.createElement('h2');
     h2Node.textContent = `${heroResults.length} hero result(s) of \"${inputTagValue}\" research :`;
-    article2.appendChild(h2Node);
-
+    heroSection.appendChild(h2Node);
     // loop all results after search
-    for (oneHero of heroResults) {
-        let nameNode = document.createElement('p');
-        nameNode.textContent = oneHero.name;
-        let idNode = document.createElement('p');
-        idNode.textContent = oneHero.id;
-        let imgNode = document.createElement('img');
-        imgNode.src = oneHero.image.url;
-        let heroBtnNode = document.createElement('button');
-        heroBtnNode.appendChild(imgNode);
-        article2.appendChild(heroBtnNode);
-        article2.appendChild(idNode);
-        article2.appendChild(nameNode);
-
-        // select one hero after search
-        heroBtnNode.addEventListener('click', () => {
-            article2.innerHTML = "";
-            article2.appendChild(imgNode);
-            article2.appendChild(idNode);
-            article2.appendChild(nameNode);
-            // put other detail properties
-
-            for (const [key, value] of Object.entries(oneHero)) {
-                if (!(key == 'id' || key == 'name' || key == 'image')) {
-                    proBtnNode = document.createElement('button');
-                    proBtnNode.textContent = key;
-                    proBtnNode.value = value;
-                    console.log(key);
-                    article2.appendChild(proBtnNode);
-                }
-            }
-
-            proBtnNode.addEventListener('click', () => {
-                console.log(proBtnNode.value);
-            })
-
-            /*
-            for (properties in oneHero) {
-                if (!(properties == 'id' || properties == 'name' || properties == 'image')) {
-                    proBtnNode = document.createElement('button');
-                    proBtnNode.textContent = properties;
-                    proBtnNode.value = properties;
-                    console.log(properties);
-                    article2.appendChild(proBtnNode);
-                }
-            }
-            proBtnNode.addEventListener('click', () => {
-                for (p in oneHero.properties) {
-                    let pNode = document.createElement('p');
-                    pNode.textContent = `${p}: ${oneHero.properties[p]}`;
-                    //article3.appendChild(pNode);
-                    proBtnNode.insertAdjacentElement('afterend', pNode);
-
-                }
-            })*/
-        })
+    for (let oneHero of heroResults) {
+        let oneOfHero = oneHero;
+        heroOptions(oneOfHero);
+        pickOneHero(oneHero, imgNode, nameNode, detailsContainerNode);
     }
 }
 
 
+let movieOptions = (one) => {
+    let articleNode = document.createElement('article');
+    let titleNode = document.createElement('h3');
+    titleNode.textContent = one.Title;
+    let imgNode = document.createElement('img');
+    imgNode.src = one.Poster;
+    articleNode.appendChild(titleNode);
+    articleNode.appendChild(imgNode);
+    movieSection.appendChild(articleNode);
+}
 
-
-
-
-let showInfo2 = () => {
+let showMovie = () => {
     let h2Node = document.createElement('h2');
     h2Node.textContent = `${movieResults.length} movie result(s) of \"${inputTagValue}\" research :`;
-    article4.appendChild(h2Node);
-
+    movieSection.appendChild(h2Node);
     for (oneMovie of movieResults) {
-        let movieNode = document.createElement('p');
-        movieNode.textContent = oneMovie.Title;
-        let imgNode = document.createElement('img');
-        imgNode.src = oneMovie.Poster;
-        article5.appendChild(imgNode);
-        article5.appendChild(movieNode);
+        movieOptions(oneMovie);
     }
 }

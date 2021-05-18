@@ -19,7 +19,6 @@ body * {
     width: 80%;
     margin: 0.5rem auto;
     border-radius: 10px;
-    color: rgb(0, 162, 255);
     font-family: 'Courier New', Courier, monospace;
     font-size: x-large;
 }
@@ -76,7 +75,7 @@ button {
 
 button:hover {
     border: 3px solid #ffffff;
-    color: #ffffff;
+    color: #ffffff !important;
     background-color: rgb(0, 162, 255);
 }
 
@@ -86,6 +85,11 @@ a:hover {
 
 section {
     border: 1px solid rgb(0, 162, 255);
+    margin-top: 4rem;
+}
+
+img {
+    margin-bottom: 3rem;
 }
 
 footer {
