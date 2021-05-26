@@ -192,9 +192,6 @@ iframe {
     height: 30rem;
 }
 
-
-/*===================*/
-
 label[for="trigger-nav"] {
     display: none;
 }
@@ -206,9 +203,6 @@ label[for="trigger-nav"] {
     left: -10rem;
     width: 1px;
 }
-
-
-/* sm devices only ================================================================ */
 
 @media (max-width: 575px) {
     p {
@@ -245,7 +239,6 @@ label[for="trigger-nav"] {
     section ul li {
         flex: 48.2% !important;
     }
-    /* off canvas ====================================================*/
     #trigger-nav+label {
         display: block;
         border: 1px solid #ffffff;
