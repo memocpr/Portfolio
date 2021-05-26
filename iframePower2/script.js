@@ -34,7 +34,7 @@ let getHeroInfo = async() => {
     const response = await fetch(myUrl);
     const data = await response.json();
     dataHero = data;
-    console.log(dataHero);
+    //console.log(dataHero);
     heroResults = dataHero.results;
     showInfo();
 }
@@ -61,7 +61,7 @@ let heroOptions = (one) => {
     nameNode.textContent = `${one.id} : ${one.name}`;
     imgNode = document.createElement('img');
     imgNode.src = one.image.url;
-    heroBtnNode = document.createElement('button');
+    heroBtnNode = document.createElement('button'); // use a tag
     heroBtnNode.appendChild(nameNode);
     heroBtnNode.appendChild(imgNode);
     articleNode.appendChild(heroBtnNode);
@@ -107,7 +107,7 @@ let pickOneHero = (hero, im, nm, div) => {
         let articleNode = document.createElement('article');
         let favBtnNode = document.createElement('button');
         let favIconNode = document.createElement('img');
-        let stylesIcon = {
+        let stylesIcon = { // dont use css here
             "width": "15px",
             "margin": "1px"
         };
