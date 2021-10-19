@@ -92,6 +92,10 @@ img {
     margin-bottom: 3rem;
 }
 
+details {
+    color: rgb(0, 162, 255);
+}
+
 footer {
     background-color: rgb(170, 170, 170);
     position: sticky;
